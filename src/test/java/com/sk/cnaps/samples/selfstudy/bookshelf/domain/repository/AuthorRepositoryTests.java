@@ -8,7 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.sk.cnaps.samples.selfstudy.bookshelf.domain.model.Author;
+import com.sk.cnaps.edu.bookshelf.domain.model.Author;
+import com.sk.cnaps.edu.bookshelf.domain.repository.AuthorRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

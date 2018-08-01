@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sk.cnaps.edu.bookshelf.domain.model.Book;
 import com.sk.cnaps.edu.bookshelf.domain.model.Bookshelf;
-import com.sk.cnaps.edu.bookshelf.domain.service.logic.BookshelfLogic;
+import com.sk.cnaps.edu.bookshelf.domain.service.BookshelfService;
 
 @RestController
 @RequestMapping
 @Transactional
 public class BookshelfRestController {
 	@Autowired
-	private BookshelfLogic logic;
+	private BookshelfService logic;
 
 	@GetMapping("v1/bookshelf-service/books:withAuthors/{id}")
 	public ResponseEntity<Book> findBookWithAuthorsById(@PathVariable Long id) {

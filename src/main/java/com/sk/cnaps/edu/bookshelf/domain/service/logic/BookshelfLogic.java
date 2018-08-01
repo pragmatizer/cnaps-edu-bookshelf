@@ -1,0 +1,46 @@
+package com.sk.cnaps.edu.bookshelf.domain.service.logic;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.sk.cnaps.edu.bookshelf.domain.model.Book;
+import com.sk.cnaps.edu.bookshelf.domain.model.Bookshelf;
+import com.sk.cnaps.edu.bookshelf.domain.repository.AuthorRepository;
+import com.sk.cnaps.edu.bookshelf.domain.repository.BookRepository;
+import com.sk.cnaps.edu.bookshelf.domain.repository.BookshelfRepository;
+import com.sk.cnaps.edu.bookshelf.domain.service.BookshelfService;
+
+@Service
+public class BookshelfLogic implements BookshelfService {
+	@Autowired
+	private AuthorRepository authorRepository;
+	
+	@Autowired
+	private BookRepository bookRepository;
+	
+	@Autowired
+	private BookshelfRepository bookshelfRepository;
+
+	@Override
+	public Book findBookWithAuthorsById(Long id) {
+		Book book = bookRepository.findOne(id);
+		if(book == null) {
+			throw new NullPointerException();
+		}
+		
+		book.getAuthorsAggregate().fillValues(authorRepository);
+		return book;
+	}
+
+	@Override
+	public Bookshelf findBookshelfWithBooksById(Long id) {
+		Bookshelf bookshelf = bookshelfRepository.findOne(id);
+		if(bookshelf == null) {
+			throw new NullPointerException();
+		}
+		
+		bookshelf.getBooksAggregate().fillValues(bookRepository);
+		return bookshelf;
+	}	
+	
+}

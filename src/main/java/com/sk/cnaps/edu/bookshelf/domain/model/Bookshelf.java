@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 
 import com.sk.cnaps.domain.model.AbstractEntity;
 import com.sk.cnaps.domain.model.AggregateProxy;
-import com.sk.cnaps.domain.model.AggregateRelationType;
 import com.sk.cnaps.domain.model.AggregateRoot;
 
 import lombok.Getter;
@@ -25,7 +24,7 @@ public class Bookshelf extends AbstractEntity implements AggregateRoot {
 	
 	@Convert(converter=AggregateProxy.class)
 	@Column(columnDefinition="TEXT")
-	private AggregateProxy<Book> booksAggregate = new AggregateProxy<>(AggregateRelationType.ONE_TO_MANY);
+	private AggregateProxy<Book> booksAggregate = new AggregateProxy<>();
 	
 	public Bookshelf(String name) {
 		super();

@@ -10,9 +10,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import springfox.documentation.spring.data.rest.configuration.SpringDataRestConfiguration;
 
 
-@ComponentScan(basePackages = {"com.sk.cnaps.*"})
-@EnableJpaRepositories(basePackages = {"com.sk.cnaps.*"})
-@EntityScan(basePackages = {"com.sk.cnaps.*"})
+//@ComponentScan(basePackages = {"com.sk.cnaps.*"})
+//@EnableJpaRepositories(basePackages = {"com.sk.cnaps.*"})
+//@EntityScan(basePackages = {"com.sk.cnaps.*"})
 @Import(SpringDataRestConfiguration.class)
 @SpringBootApplication
 public class BookshelfApplication {

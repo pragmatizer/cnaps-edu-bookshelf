@@ -8,13 +8,11 @@ import javax.persistence.Enumerated;
 
 import com.sk.cnaps.domain.model.AbstractEntity;
 import com.sk.cnaps.domain.model.AggregateProxy;
-import com.sk.cnaps.domain.model.AggregateRelationType;
 import com.sk.cnaps.domain.model.AggregateRoot;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 @Getter
 @Setter
@@ -37,7 +35,7 @@ public class Book extends AbstractEntity implements AggregateRoot {
     
     @Convert(converter=AggregateProxy.class)
     @Column(columnDefinition="TEXT")
-    private AggregateProxy<Author> authorsAggregate = new AggregateProxy<>(AggregateRelationType.ONE_TO_MANY);
+    private AggregateProxy<Author> authorsAggregate = new AggregateProxy<>();
     
     public Book(String title, String subtitle, VersionType versionType) {
     	this.title = title;
